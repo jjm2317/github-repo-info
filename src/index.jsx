@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import App from 'App';
 import theme from 'styles/theme';
 import 'styles/reset.css';
+import 'styles/index.css';
 
 const queryClient = new QueryClient({
   defaultOptions: {

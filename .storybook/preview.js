@@ -1,5 +1,6 @@
 import theme from 'styles/theme';
 import { ThemeProvider } from 'styled-components';
+import 'styles/index.css';
 
 export const decorators = [
   (Story) => (
