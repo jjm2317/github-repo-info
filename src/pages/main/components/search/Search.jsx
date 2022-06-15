@@ -1,27 +1,52 @@
+import { useState } from 'react';
+
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import Typography from 'components/Typography';
-import Button from 'components/Button';
 
-const Search = () => <></>;
+const Search = () => {
+  const [searchValue, setSearchValue] = useState('');
+
+  const repoList = [
+    { id: 1, full_name: 'dtrupenn/Tetris' },
+    { id: 2, full_name: 'dtrupenn/Tetris2' },
+  ];
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleRegister = () => {};
+
+  return (
+    <SearchView
+      repoList={repoList}
+      searchValue={searchValue}
+      onChange={handleChange}
+      onRegister={handleRegister}
+    />
+  );
+};
 
 export default Search;
 
-export const SearchView = ({ searchValue = '', repoList, handleRegister }) => (
+export const SearchView = ({ searchValue, repoList, onChange, onRegister }) => (
   <Form>
     <TextInput
+      placeholder="repository 명을 입력해주세요."
       type="text"
       value={searchValue}
-      placeholder="레포지토리 명을 입력해주세요."
+      onChange={onChange}
     />
-    {repoList && (
+    {searchValue && repoList && (
       <List>
         {repoList.map((repo) => (
           <Item key={repo.id}>
-            <Typography>{repo.full_name}</Typography>
-            <Button onClick={() => handleRegister(repo.id)}>등록</Button>
+            <Typography type="b1">{repo.full_name}</Typography>
+            <Button onClick={() => onRegister(repo.id)}>등록</Button>
           </Item>
         ))}
       </List>
@@ -30,8 +55,12 @@ export const SearchView = ({ searchValue = '', repoList, handleRegister }) => (
 );
 
 SearchView.propTypes = {
-  searchValue: PropTypes.string,
-  repoList: PropTypes.arrayOf(PropTypes.shape),
+  repoList: PropTypes.arrayOf(
+    PropTypes.shape({ full_name: PropTypes.string, id: PropTypes.number })
+  ).isRequired,
+  searchValue: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onRegister: PropTypes.func.isRequired,
 };
 
 const Form = styled.form`

@@ -60,7 +60,6 @@
     ],
     "import/default": "error",
     "import/namespace": "error",
-    "import/no-unused-modules": ["error", { "unusedExports": true }],
     "import/no-commonjs": "error",
     "import/no-nodejs-modules": "error",
     "import/order": [

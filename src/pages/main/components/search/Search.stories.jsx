@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { SearchView as Search } from 'pages/main/components/search/Search';
+import { SearchView } from 'pages/main/components/search/Search';
 
 export default {
-  component: Search,
+  component: SearchView,
 };
 
-export const Default = (args) => <Search {...args} />;
+export const Default = (args) => <SearchView {...args} />;
 
 Default.args = {
   searchValue: 'Tetris',
