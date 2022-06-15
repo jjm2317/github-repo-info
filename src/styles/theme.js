@@ -30,38 +30,48 @@ const color = Object.freeze({
   red: '#FF0000',
 });
 
+const pretendard = css`
+  font-family: Pretendard;
+`;
+
 const typography = Object.freeze({
   h1: css`
+    ${pretendard}
     font-size: 50px;
     font-weight: 700;
     line-height: 60px;
     letter-spacing: -0.005em;
   `,
   h2: css`
+    ${pretendard}
     font-size: 30px;
     font-weight: 700;
     line-height: 45px;
     letter-spacing: -0.005em;
   `,
   subtitle1: css`
+    ${pretendard}
     font-size: 20px;
     font-weight: 400;
     line-height: 40px;
     letter-spacing: -0.005em;
   `,
   b1: css`
+    ${pretendard}
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
     letter-spacing: -0.005em;
   `,
   b2: css`
+    ${pretendard}
     font-size: 14px;
     font-weight: 400;
     line-height: 23px;
     letter-spacing: -0.005em;
   `,
   caption: css`
+    ${pretendard}
     font-size: 11px;
     font-weight: 400;
     line-height: 16px;

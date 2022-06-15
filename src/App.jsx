@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Main from 'Main';
+import MainPage from 'pages/main/MainPage';
 
 const App = () => (
   <Routes>
-    <Route path="/">
-      <Main />
-    </Route>
+    <Route element={<MainPage />} path="/" />
   </Routes>
 );
+
 export default App;
