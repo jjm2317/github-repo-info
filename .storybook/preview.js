@@ -1,14 +1,20 @@
 import theme from 'styles/theme';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import 'styles/index.css';
 
 export const decorators = [
   (Story) => (
     <ThemeProvider theme={theme}>
-      <Story />
+      <Wrapper>
+        <Story />
+      </Wrapper>
     </ThemeProvider>
   ),
 ];
+
+const Wrapper = styled.div`
+  max-width: 400px;
+`;
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
