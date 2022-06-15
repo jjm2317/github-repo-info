@@ -44,7 +44,7 @@ const typography = Object.freeze({
   `,
   h2: css`
     ${pretendard}
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     line-height: 45px;
     letter-spacing: -0.005em;

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import Typography from 'components/Typography';
+import GithubPropTypes from 'model/GithubPropTypes';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -55,9 +56,7 @@ export const SearchView = ({ searchValue, repoList, onChange, onRegister }) => (
 );
 
 SearchView.propTypes = {
-  repoList: PropTypes.arrayOf(
-    PropTypes.shape({ full_name: PropTypes.string, id: PropTypes.number })
-  ).isRequired,
+  repoList: PropTypes.arrayOf(GithubPropTypes.repository).isRequired,
   searchValue: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onRegister: PropTypes.func.isRequired,

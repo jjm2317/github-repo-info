@@ -5,8 +5,9 @@ const Button = styled.button`
   font-family: Pretendard;
   border-radius: 4px;
   border: none;
-  background-color: ${({ theme }) => theme.color.bg_dark};
-  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme, bgColor }) =>
+    theme.color[bgColor || 'bg_dark']};
+  color: ${({ theme, textColor }) => theme.color[textColor || 'white']};
   cursor: pointer;
 `;
 
