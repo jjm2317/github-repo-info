@@ -26,14 +26,20 @@ const RepoList = () => {
       <Typography type="h2">등록한 repository</Typography>
       {repoList && (
         <List>
-          {repoList.map((repo) => (
-            <RepoItem
-              key={repo.id}
-              repo={repo}
-              onDeleteButtonClick={handleDeleteButtonClick(repo.id)}
-              onIssueButtonClick={handleIssueButtonClick(repo.full_name)}
-            />
-          ))}
+          {repoList.length ? (
+            repoList.map((repo) => (
+              <RepoItem
+                key={repo.id}
+                repo={repo}
+                onDeleteButtonClick={handleDeleteButtonClick(repo.id)}
+                onIssueButtonClick={handleIssueButtonClick(repo.full_name)}
+              />
+            ))
+          ) : (
+            <MessageWrapper>
+              <Typography type="b1">repository를 등록해주세요!</Typography>
+            </MessageWrapper>
+          )}
         </List>
       )}
     </Container>
@@ -43,7 +49,7 @@ const RepoList = () => {
 export default RepoList;
 
 const Container = styled.section`
-  margin-top: 50px;
+  margin-top: 150px;
 `;
 
 const List = styled.ul`
@@ -51,7 +57,15 @@ const List = styled.ul`
   padding: 0;
   margin: 0;
   width: 100%;
-  max-height: 200px;
+  height: 200px;
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.lightgrey};
+`;
+
+const MessageWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;

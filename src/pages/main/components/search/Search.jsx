@@ -6,10 +6,12 @@ import styled from 'styled-components';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import Typography from 'components/Typography';
+import useLocalStorage from 'hooks/useLocalStorage';
 import GithubPropTypes from 'model/GithubPropTypes';
 import useRepositoryQuery from 'query/repository';
 
 const Search = () => {
+  const [storedRepoList, setRepoList] = useLocalStorage('repos', []);
   const [searchValue, setSearchValue] = useState('');
 
   const { data: repoList } = useRepositoryQuery(searchValue);
@@ -18,7 +20,19 @@ const Search = () => {
     setSearchValue(e.target.value);
   };
 
-  const handleRegister = () => {};
+  const handleRegister = (repoId) => {
+    if (storedRepoList.length >= 4) {
+      alert('repository 등록은 4개까지 가능합니다!');
+      return;
+    }
+    if (storedRepoList.find(({ id }) => id === repoId)) {
+      alert('이미 등록된 repository 입니다!');
+      return;
+    }
+    setRepoList((storedList) =>
+      storedList.concat(repoList.find((repo) => repo.id === repoId))
+    );
+  };
 
   return (
     <SearchView
@@ -71,7 +85,7 @@ const List = styled.ul`
   padding: 0;
   margin: 0;
   width: 100%;
-  max-height: 200px;
+  max-height: 150px;
   top: 100%;
   left: 0;
   background-color: ${({ theme }) => theme.color.white};
