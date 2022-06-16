@@ -7,14 +7,12 @@ import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import Typography from 'components/Typography';
 import GithubPropTypes from 'model/GithubPropTypes';
+import useRepositoryQuery from 'query/repository';
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const repoList = [
-    { id: 1, full_name: 'dtrupenn/Tetris' },
-    { id: 2, full_name: 'dtrupenn/Tetris2' },
-  ];
+  const { data: repoList } = useRepositoryQuery(searchValue);
 
   const handleChange = (e) => {
     setSearchValue(e.target.value);
@@ -79,6 +77,7 @@ const List = styled.ul`
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.lightgrey};
   border-top: none;
+  overflow-y: auto;
 `;
 
 const Item = styled.li`
