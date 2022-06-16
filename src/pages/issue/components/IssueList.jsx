@@ -21,4 +21,5 @@ IssueList.propTypes = {
 const List = styled.ul`
   background-color: ${({ theme }) => theme.color.white};
   height: 380px;
+  overflow-y: auto;
 `;

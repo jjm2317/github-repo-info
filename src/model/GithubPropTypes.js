@@ -6,10 +6,10 @@ const repository = PropTypes.shape({
 });
 
 const issue = PropTypes.shape({
+  html_url: PropTypes.string,
   id: PropTypes.number,
   state: PropTypes.string,
   title: PropTypes.string,
-  url: PropTypes.string,
 });
 
 const GithubPropTypes = {
