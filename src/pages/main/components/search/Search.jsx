@@ -20,7 +20,8 @@ const Search = () => {
     setSearchValue(e.target.value);
   };
 
-  const handleRegister = (repoId) => {
+  const handleRegister = (repoId) => (e) => {
+    e.preventDefault();
     if (storedRepoList.length >= 4) {
       alert('repository 등록은 4개까지 가능합니다!');
       return;
@@ -59,7 +60,7 @@ export const SearchView = ({ searchValue, repoList, onChange, onRegister }) => (
         {repoList.map((repo) => (
           <Item key={repo.id}>
             <Typography type="b1">{repo.full_name}</Typography>
-            <Button onClick={() => onRegister(repo.id)}>등록</Button>
+            <Button onClick={onRegister(repo.id)}>등록</Button>
           </Item>
         ))}
       </List>
