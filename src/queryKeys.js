@@ -5,5 +5,5 @@ export const RepositoryKeys = {
 
 export const IssueKeys = {
   all: () => ['github', 'issue'],
-  list: (page) => [...IssueKeys.all(), 'list', page],
+  list: (owner, repo, page) => [...IssueKeys.all(), 'list', owner, repo, page],
 };

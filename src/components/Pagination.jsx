@@ -10,7 +10,7 @@ import ARROW_DISABLED from 'images/pagination_arrow_left_disabled.png';
 const Pagination = ({ curPage, setCurPage, pageNum, paginationLen = 5 }) => {
   const baseVal = parseInt((curPage - 1) / paginationLen, 10) * paginationLen;
   const pageNumbers = Array.from(
-    { length: Math.min(pageNum, baseVal + 5) - baseVal },
+    { length: Math.min(pageNum, baseVal + 1) - baseVal },
     (_, i) => baseVal + i + 1
   );
 
@@ -42,7 +42,7 @@ const Pagination = ({ curPage, setCurPage, pageNum, paginationLen = 5 }) => {
       </NumberButtonContainer>
       <ArrowButton
         isRight
-        disabled={curPage >= pageNum}
+        disabled={curPage > pageNum}
         onClick={() => setCurPage(Math.min(pageNum, curPage + paginationLen))}
       />
     </Container>

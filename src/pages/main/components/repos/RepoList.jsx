@@ -23,7 +23,9 @@ const RepoList = () => {
 
   return (
     <Container>
-      <Typography type="h2">등록한 repository</Typography>
+      <Typography as="h2" type="h2">
+        등록한 repository
+      </Typography>
       {repoList && (
         <List>
           {repoList.length ? (
