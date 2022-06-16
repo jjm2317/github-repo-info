@@ -103,11 +103,11 @@ const NumberButton = styled.button`
   ${({ theme, isCur }) =>
     isCur
       ? css`
-          background-color: ${theme.palette.tenant.primary};
+          background-color: ${theme.color.grey};
         `
       : css`
           &:hover {
-            background-color: ${theme.palette.border[100]};
+            background-color: ${theme.color.lightgrey};
           }
         `}
 `;
