@@ -11,6 +11,7 @@ const getRepository = async (query) => {
     {
       params: {
         q: query,
+        sort: 'stars',
       },
     }
   );
