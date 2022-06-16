@@ -64,6 +64,7 @@ SearchView.propTypes = {
 
 const Form = styled.form`
   position: relative;
+  margin-top: 50px;
 `;
 
 const List = styled.ul`
