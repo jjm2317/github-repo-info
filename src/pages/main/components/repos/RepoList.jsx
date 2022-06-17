@@ -1,16 +1,12 @@
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Typography from 'components/Typography';
-import useLocalStorage from 'hooks/useLocalStorage';
+import GithubPropTypes from 'model/GithubPropTypes';
 import RepoItem from 'pages/main/components/repos/RepoItem';
 
-const RepoList = () => {
-  const [repoList, setRepoList] = useLocalStorage('repos', [
-    { id: 1, full_name: 'dtrupenn/Tetris' },
-    { id: 2, full_name: 'dtrupenn/Tetris2' },
-  ]);
-
+const RepoList = ({ repoList, setRepoList }) => {
   const navigate = useNavigate();
 
   const handleIssueButtonClick = (repoName) => () => {
@@ -49,6 +45,11 @@ const RepoList = () => {
 };
 
 export default RepoList;
+
+RepoList.propTypes = {
+  repoList: PropTypes.arrayOf(GithubPropTypes.repository).isRequired,
+  setRepoList: PropTypes.func.isRequired,
+};
 
 const Container = styled.section`
   margin-top: 150px;

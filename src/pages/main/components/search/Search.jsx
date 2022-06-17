@@ -6,12 +6,10 @@ import styled from 'styled-components';
 import Button from 'components/Button';
 import TextInput from 'components/TextInput';
 import Typography from 'components/Typography';
-import useLocalStorage from 'hooks/useLocalStorage';
 import GithubPropTypes from 'model/GithubPropTypes';
 import useRepositoryQuery from 'query/repository';
 
-const Search = () => {
-  const [storedRepoList, setRepoList] = useLocalStorage('repos', []);
+const Search = ({ storedRepoList, setRepoList }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const { data: repoList } = useRepositoryQuery(searchValue);
@@ -37,7 +35,7 @@ const Search = () => {
 
   return (
     <SearchView
-      repoList={repoList}
+      repoList={repoList || []}
       searchValue={searchValue}
       onChange={handleChange}
       onRegister={handleRegister}
@@ -46,6 +44,11 @@ const Search = () => {
 };
 
 export default Search;
+
+Search.propTypes = {
+  setRepoList: PropTypes.func.isRequired,
+  storedRepoList: PropTypes.arrayOf(GithubPropTypes.repository).isRequired,
+};
 
 export const SearchView = ({ searchValue, repoList, onChange, onRegister }) => (
   <Form>
